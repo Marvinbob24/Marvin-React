@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React from 'react';
 import Layout from '../components/Layouts/Layout';
-import Hero from '../components/Hero/Hero';
+import Hero from '../components/Hero/hero';
 import FanArtSection from '../components/fanart/fanart';
 import BestSellingProducts from '../components/BestSelling/bestSelling';
 import FeaturesSection from '../components/Features/Features';
