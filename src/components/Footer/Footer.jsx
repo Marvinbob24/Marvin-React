@@ -118,11 +118,11 @@ const Footer = () => {
             <motion.div className="footer-column" variants={itemVariants}>
               <h3>Shop</h3>
               <ul>
-                <li><a href="#">Football</a></li>
-                <li><a href="#">Basketball</a></li>
-                <li><a href="#">Tennis</a></li>
-                <li><a href="#">Baseball</a></li>
-                <li><a href="#">Hockey</a></li>
+                <li><a href="/collections/football/barcelona">Football</a></li>
+                <li><a href="/collections/basketball/warriors">Basketball</a></li>
+                <li><a href="/collections/tennis">Tennis</a></li>
+                <li><a href="/collections/cricket">Baseball</a></li>
+                <li><a href="/collections/fanart">Fan Art</a></li>
               </ul>
             </motion.div>
 

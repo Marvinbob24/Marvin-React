@@ -1,4 +1,3 @@
-
 .header {
   background-color: white;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -32,13 +31,14 @@
 .logo h1 {
   font-size: 1.8rem;
   font-weight: 800;
+  cursor: pointer;
 }
 
 .logo span {
   color: #ff4d4f; 
 }
 
-
+/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -56,18 +56,19 @@
   font-weight: 600;
 }
 
-/* Dropdown */
+/* ================= DROPDOWN (CLICK) ================= */
 .dropdown {
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .dropdown-toggle {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-weight: 500;
   color: #333;
 }
@@ -75,24 +76,32 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 120%;
   left: 0;
   background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  min-width: 200px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-width: 220px;
   flex-direction: column;
-  padding: 8px 0;
+  padding: 10px 0;
   z-index: 100;
+  transition: all 0.3s ease;
 }
 
-.dropdown:hover .dropdown-menu {
+/* Only show menu when open class is added via click */
+.dropdown-menu.open {
   display: flex;
-  flex-direction: column;
 }
 
 .dropdown-item {
   padding: 8px 20px;
   position: relative;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+  border-radius: 5px;
 }
 
 .dropdown-item > span {
@@ -100,10 +109,8 @@
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
-}
-
-.dropdown-item:hover {
-  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
 }
 
 .dropdown-submenu {
@@ -112,15 +119,18 @@
   top: 0;
   left: 100%;
   background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   min-width: 180px;
   padding: 8px 0;
+  border-radius: 6px;
   flex-direction: column;
   z-index: 110;
 }
 
-.dropdown-item:hover .dropdown-submenu {
+/* Only show submenu when open-submenu class is added via click */
+.dropdown-submenu.open-submenu {
   display: flex;
+  flex-direction: column;
 }
 
 .dropdown-submenu a {
@@ -128,10 +138,13 @@
   text-decoration: none;
   color: #333;
   display: block;
+  font-weight: 500;
+  transition: background 0.2s ease;
 }
 
 .dropdown-submenu a:hover {
   background-color: #eee;
+  border-radius: 4px;
 }
 
 /* Header Actions */
@@ -176,31 +189,31 @@
 @media (max-width: 992px) {
   .nav-links {
     position: fixed;
-  top: 80px; 
-  left: 0;
-  right: 0;
-  background: white;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  gap: 10px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
-  transform: translateY(-100vh); /* hide off-screen fully */
-  transition: transform 0.3s ease-in-out; /* smooth slide */
-  z-index: 99;
+    top: 80px; 
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
   }
 
   .header {
     height: 100px;
+    width: 95%;
   }
 
   .header .container {
-    padding:  0 15px 0 0; 
+    padding: 0; 
     flex-direction: row; 
     justify-content: space-between;
     align-items: center; 
     height: 40px; 
-    
   }
 
   .logo {
@@ -225,12 +238,12 @@
     display: none;
   }
 
-  
+  /* Mobile dropdown overrides */
   .dropdown-menu {
     position: relative;
-    box-shadow: none;
     top: auto;
     left: auto;
+    box-shadow: none;
     min-width: 100%;
     width: 100%;
     padding: 0;
@@ -238,7 +251,7 @@
 
   .dropdown-item {
     width: 100%;
-    padding: 8px 16px; 
+    padding: 12px 16px;
   }
 
   .dropdown-item > span {
@@ -251,19 +264,19 @@
     left: auto;
     box-shadow: none;
     width: 100%;
-    padding-left: 16px; 
+    padding-left: 20px;
     display: none;
   }
 
   .dropdown-item.open-submenu .dropdown-submenu {
     display: flex;
+    flex-direction: column;
   }
 }
 
-
 @media (max-width: 480px) {
   .logo h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .cart-icon, .user-icon {
@@ -279,6 +292,14 @@
   }
 
   .dropdown-item {
-    padding: 8px 12px; 
+    padding: 10px 12px; 
+  }
+
+  .dropdown-submenu {
+    padding-left: 18px;
+  }
+
+  .header {
+    width: 100%;
   }
 }
