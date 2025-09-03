@@ -176,18 +176,18 @@
 @media (max-width: 992px) {
   .nav-links {
     position: fixed;
-    top: 80px; 
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0; 
-    gap: 10px; /* reduce from 15px */
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
-    z-index: 99;
+  top: 80px; 
+  left: 0;
+  right: 0;
+  background: white;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+  transform: translateY(-100vh); /* hide off-screen fully */
+  transition: transform 0.3s ease-in-out; /* smooth slide */
+  z-index: 99;
   }
 
   .header {
