@@ -1,0 +1,77 @@
+.container {
+  margin-bottom: 3rem;
+}
+
+.fan-art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 0 1rem;
+}
+
+.art-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+  background: white;
+}
+
+.art-card:hover {
+  transform: translateY(-10px);
+}
+
+.art-img-wrapper {
+  height: 250px;
+  overflow: hidden;
+}
+
+.art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.art-content {
+  padding: 20px;
+}
+
+.art-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--dark, #222);
+}
+
+.art-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray, #777);
+  font-size: 0.9rem;
+}
+
+.art-meta i {
+  color: var(--secondary, #f44336);
+  margin-right: 5px;
+}
+
+/* Footer for the button */
+.fan-art-footer {
+  text-align: center;
+  margin-top: 40px; /* spacing from grid */
+}
+
+.fan-art-footer .btnn {
+  background: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.fan-art-footer .btnn:hover {
+  background: #003f80;
+}

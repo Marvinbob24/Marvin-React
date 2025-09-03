@@ -1,0 +1,149 @@
+/* Container */
+.contact-container {
+  max-width: 1100px;
+  margin: 7rem auto;
+  padding: 0 15px;
+  font-family: 'Lato', sans-serif;
+  color: black;
+}
+
+/* Page Title */
+.contact-container h1 {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: rgb(49, 47, 47);
+  margin-bottom: 10px;
+}
+
+/* Intro Paragraph */
+.contact-intro {
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(49, 47, 47);
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+/* Contact Methods Grid */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Individual Cards */
+.contact-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.contact-card h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: rgb(49, 47, 47);
+  margin-bottom: 1rem;
+}
+
+.contact-card p {
+  font-size: 0.95rem;
+  color: rgb(49, 47, 47);
+  margin-bottom: 1rem;
+}
+
+.contact-card a {
+  display: inline-block;
+  font-weight: 600;
+  color: #fdbb2d;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.contact-card a:hover {
+  color: rgb(49, 47, 47);
+}
+
+/* Contact Form */
+.contact-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto 5rem auto;
+}
+
+.contact-form h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: rgb(49, 47, 47);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1a2a6c;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #0056b3;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.contact-form button:hover {
+  background: #003f80;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Responsive Text Centering for small screens */
+@media (max-width: 768px) {
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+}

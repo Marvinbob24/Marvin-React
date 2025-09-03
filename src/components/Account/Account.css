@@ -1,0 +1,103 @@
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.account-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-top: 10rem;
+  transition: all 0.3s ease;
+}
+
+.account-box h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.account-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.account-box input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.account-box button {
+  padding: 0.75rem 1rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.account-box button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 0.5rem;
+  color: red;
+  text-align: center;
+}
+
+.toggle {
+  margin-top: 1rem;
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.forgot-password {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.success {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 480px) {
+  .account-box {
+    margin-top: 5rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .account-box input,
+  .account-box button {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .account-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .toggle,
+  .forgot-password {
+    font-size: 0.9rem;
+  }
+}
