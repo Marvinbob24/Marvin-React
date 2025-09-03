@@ -3,7 +3,7 @@ import "./Blogs.css";
 
 // Import my local images
 import sportswearImg from "../../assets/Test/sportswearImg.jpeg";
-import footballJerseyImg from "../../assets/Test/footballjerseyImg.jpeg";
+import footballJerseyImg from "../../assets/Test/footballJerseyImg.jpeg";
 import basketballFashionImg from "../../assets/Test/basketballfashionImg.jpeg";
 
 const Blog = () => {
