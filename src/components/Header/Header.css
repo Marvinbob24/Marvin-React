@@ -1,47 +1,49 @@
+/* ================= HEADER ================= */
 .header {
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: fixed;
   top: 0;
-  bottom: 35em;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 100;
   transition: all 0.3s ease;
-  width: 100%;
-  padding: 0 20px;
+  height: 80px; /* reduced height */
 }
 
 .header.scrolled {
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 20px 30px 0 30px; /* reduced padding */
 }
 
 /* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.logo h1 {
-  font-size: 1.8rem;
-  font-weight: 800;
+  gap: 20px;
   cursor: pointer;
 }
 
+.logo h1 {
+  font-size: 1.5rem; /* smaller font */
+  font-weight: 800;
+}
+
 .logo span {
-  color: #ff4d4f; 
+  color: #ff4d4f;
 }
 
 /* Navigation Links */
 .nav-links {
   display: flex;
-  gap: 25px;
+  gap: 20px; /* reduce spacing */
+  align-items: center;
 }
 
 .nav-links a {
@@ -51,18 +53,16 @@
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover, .nav-links .active {
+.nav-links a.active,
+.nav-links a:hover {
   color: #6163ee;
   font-weight: 600;
 }
 
-/* ================= DROPDOWN (CLICK) ================= */
+/* Dropdown */
 .dropdown {
   position: relative;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
 }
 
 .dropdown-toggle {
@@ -70,47 +70,34 @@
   align-items: center;
   gap: 5px;
   font-weight: 500;
-  color: #333;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 120%;
+  top: 100%;
   left: 0;
   background: white;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  border-radius: 8px;
-  min-width: 220px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  border-radius: 6px;
   flex-direction: column;
-  padding: 10px 0;
+  min-width: 200px; /* slightly smaller */
+  padding: 8px 0;
   z-index: 100;
-  transition: all 0.3s ease;
 }
 
-/* Only show menu when open class is added via click */
 .dropdown-menu.open {
   display: flex;
 }
 
 .dropdown-item {
-  padding: 8px 20px;
-  position: relative;
+  padding: 6px 16px; /* reduced padding */
   transition: background 0.2s ease;
 }
 
 .dropdown-item:hover {
   background-color: #f5f5f5;
-  border-radius: 5px;
-}
-
-.dropdown-item > span {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
+  border-radius: 4px;
 }
 
 .dropdown-submenu {
@@ -119,38 +106,21 @@
   top: 0;
   left: 100%;
   background: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  min-width: 180px;
-  padding: 8px 0;
-  border-radius: 6px;
+  min-width: 160px; /* smaller submenu */
+  padding: 6px 0;
   flex-direction: column;
-  z-index: 110;
+  border-radius: 5px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-/* Only show submenu when open-submenu class is added via click */
 .dropdown-submenu.open-submenu {
   display: flex;
-  flex-direction: column;
-}
-
-.dropdown-submenu a {
-  padding: 6px 20px;
-  text-decoration: none;
-  color: #333;
-  display: block;
-  font-weight: 500;
-  transition: background 0.2s ease;
-}
-
-.dropdown-submenu a:hover {
-  background-color: #eee;
-  border-radius: 4px;
 }
 
 /* Header Actions */
 .header-actions {
   display: flex;
-  gap: 20px;
+  gap: 10px; /* smaller spacing */
   align-items: center;
 }
 
@@ -158,72 +128,48 @@
   display: flex;
   align-items: center;
   background: #f1f3f5;
-  border-radius: 30px;
-  padding: 8px 15px;
+  border-radius: 25px;
+  padding: 4px 10px; /* reduced padding */
 }
 
 .search-bar input {
   border: none;
-  background: transparent;
   outline: none;
-  padding-left: 10px;
-  width: 180px;
+  background: transparent;
+  padding-left: 6px;
+  width: 130px; /* smaller input */
 }
 
 .cart-icon, .user-icon {
+  font-size: 1.2rem; /* smaller icons */
   cursor: pointer;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
 }
 
 .menu-toggle {
   display: none;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem; /* smaller hamburger */
   cursor: pointer;
 }
 
-/* ===================== MOBILE RESPONSIVE ===================== */
+/* ================= MOBILE ================= */
 @media (max-width: 992px) {
   .nav-links {
     position: fixed;
-    top: 80px; 
+    top: 55px; /* adjusted for smaller header */
     left: 0;
     right: 0;
     background: white;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
-    gap: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    padding: 15px 0;
+    gap: 8px;
     transform: translateY(-100vh);
     transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
     z-index: 99;
-  }
-
-  .header {
-    height: 100px;
-    width: 95%;
-  }
-
-  .header .container {
-    padding: 0; 
-    flex-direction: row; 
-    justify-content: space-between;
-    align-items: center; 
-    height: 40px; 
-  }
-
-  .logo {
-    margin-top: 2.5rem;
-  }
-
-  .container .cart-icon,
-  .container .user-icon,
-  .container .menu-toggle {
-    margin-top: 2.2rem;
   }
 
   .nav-links.open {
@@ -238,49 +184,36 @@
     display: none;
   }
 
-  /* Mobile dropdown overrides */
   .dropdown-menu {
     position: relative;
-    top: auto;
-    left: auto;
+    width: 100%;
     box-shadow: none;
-    min-width: 100%;
-    width: 100%;
-    padding: 0;
   }
 
-  .dropdown-item {
-    width: 100%;
-    padding: 12px 16px;
-  }
-
-  .dropdown-item > span {
-    justify-content: space-between;
+  .header {
+    height: 65px; /* further reduced height */
   }
 
   .dropdown-submenu {
     position: relative;
-    top: auto;
-    left: auto;
-    box-shadow: none;
     width: 100%;
-    padding-left: 20px;
-    display: none;
+    padding-left: 16px;
   }
 
-  .dropdown-item.open-submenu .dropdown-submenu {
-    display: flex;
-    flex-direction: column;
+  .header .container {
+    padding: 8px 15px;
+    height: 20px 0 0 0; /* match header height */
   }
 }
 
+/* ================= SMALL MOBILE ================= */
 @media (max-width: 480px) {
   .logo h1 {
     font-size: 1.2rem;
   }
 
   .cart-icon, .user-icon {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .menu-toggle {
@@ -288,18 +221,14 @@
   }
 
   .nav-links a {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 
   .dropdown-item {
-    padding: 10px 12px; 
+    padding: 8px 12px;
   }
 
   .dropdown-submenu {
-    padding-left: 18px;
-  }
-
-  .header {
-    width: 100%;
+    padding-left: 14px;
   }
 }

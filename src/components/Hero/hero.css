@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 100%;
   display: flex;
-  margin: 3.5rem 0 3rem 0;
+  margin: 3.9rem 0 3rem 0;
 }
 
 .left-side {
@@ -283,7 +283,7 @@
   .hero-container {
     flex-direction: column;
     height: auto;
-    margin: 6rem 0;
+    margin: 3rem 0;
     width: 100%;
     overflow-x: hidden;
     position: relative;
