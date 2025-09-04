@@ -9,6 +9,8 @@
 // import Pagination from "./Pagination";
 // import { useLocation } from "react-router-dom";
 // import { motion } from "framer-motion"; 
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 // import "./Products.css";
 
 // const Products = () => {
@@ -25,7 +27,6 @@
 //   const queryParams = new URLSearchParams(location.search);
 //   const searchQuery = queryParams.get("search") || "";
 
-//   // ref to scroll back to top of grid
 //   const productGridRef = useRef(null);
 
 //   // Fetch products
@@ -34,11 +35,9 @@
 //       try {
 //         const res = await axios.get(`${API_URL}/api/products/get`);
 //         setProducts(res.data.products);
-
 //         const initialFiltered = res.data.products.filter((p) =>
 //           p.name.toLowerCase().includes(searchQuery.toLowerCase())
 //         );
-
 //         setFilteredProducts(initialFiltered.length ? initialFiltered : res.data.products);
 //       } catch (err) {
 //         console.error("Error fetching products:", err);
@@ -54,7 +53,6 @@
 //     }
 //   }, [currentPage]);
 
-//   // Add new product instantly
 //   const refreshProductList = (newProduct) => {
 //     setProducts((prev) => [newProduct, ...prev]);
 //     setFilteredProducts((prev) => [newProduct, ...prev]);
@@ -65,7 +63,9 @@
 //     if (!window.confirm("Are you sure you want to delete this product?")) return;
 //     try {
 //       const token = localStorage.getItem("token");
-//       if (!token || !user?.isAdmin) return alert("You must be logged in as admin");
+//       if (!token || !user?.isAdmin) {
+//         return toast.warn("FanGear Central ⚠️ You must be logged in as admin");
+//       }
 
 //       await axios.delete(`${API_URL}/api/products/delete/${id}`, {
 //         headers: { Authorization: `Bearer ${token}` },
@@ -73,10 +73,12 @@
 
 //       setProducts((prev) => prev.filter((p) => p._id !== id));
 //       setFilteredProducts((prev) => prev.filter((p) => p._id !== id));
-//       alert("Product deleted successfully!");
+//       toast.success("FanGear Central ✅ Product deleted successfully!");
 //     } catch (err) {
 //       console.error("Error deleting product:", err.response || err);
-//       alert(err.response?.data?.message || "Failed to delete product.");
+//       toast.error(
+//         `FanGear Central ⚠️ ${err.response?.data?.message || "Failed to delete product"}`
+//       );
 //     }
 //   };
 
@@ -110,7 +112,7 @@
 //   const handleAddToCart = async (productId) => {
 //     try {
 //       const token = localStorage.getItem("token");
-//       if (!token) return alert("You must be logged in to add to cart");
+//       if (!token) return toast.warn("FanGear Central ⚠️ You must be logged in to add to cart");
 
 //       await axios.post(
 //         `${API_URL}/api/carts/add`,
@@ -119,14 +121,15 @@
 //       );
 
 //       window.dispatchEvent(new Event("cartUpdated"));
-//       alert("✅ Product added to cart!");
+//       toast.success("FanGear Central Product added to cart!");
 //     } catch (error) {
 //       console.error("Add to cart error:", error.response?.data || error.message);
-//       alert(error.response?.data?.message || "Failed to add product to cart.");
+//       toast.error(
+//         `FanGear Central ⚠️ ${error.response?.data?.message || "Failed to add product to cart"}`
+//       );
 //     }
 //   };
 
-//   // Framer Motion variants
 //   const cardVariants = {
 //     hidden: { opacity: 0, y: 30 },
 //     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -134,9 +137,9 @@
 
 //   return (
 //     <div className="shop-container">
+//       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
 //       {user?.isAdmin && <ProductForm onProductAdded={refreshProductList} />}
 
-//       {/* Filters */}
 //       <Filters
 //         sortType={sortType}
 //         filterCategory={filterCategory}
@@ -144,7 +147,6 @@
 //         handleCategoryFilter={handleCategoryFilter}
 //       />
 
-//       {/* Product Grid */}
 //       <div ref={productGridRef} className="products-grid">
 //         {currentProducts.map((product) => (
 //           <motion.div
@@ -166,7 +168,6 @@
 //         {currentProducts.length === 0 && <p>No products found.</p>}
 //       </div>
 
-//       {/* Pagination */}
 //       <Pagination
 //         currentPage={currentPage}
 //         totalPages={totalPages}
@@ -200,6 +201,8 @@ const Products = () => {
   const [filterCategory, setFilterCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
+
+  // ✅ Always use this variable for API requests
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   const location = useLocation();
@@ -214,10 +217,13 @@ const Products = () => {
       try {
         const res = await axios.get(`${API_URL}/api/products/get`);
         setProducts(res.data.products);
+
         const initialFiltered = res.data.products.filter((p) =>
           p.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        setFilteredProducts(initialFiltered.length ? initialFiltered : res.data.products);
+        setFilteredProducts(
+          initialFiltered.length ? initialFiltered : res.data.products
+        );
       } catch (err) {
         console.error("Error fetching products:", err);
       }
@@ -256,7 +262,9 @@ const Products = () => {
     } catch (err) {
       console.error("Error deleting product:", err.response || err);
       toast.error(
-        `FanGear Central ⚠️ ${err.response?.data?.message || "Failed to delete product"}`
+        `FanGear Central ⚠️ ${
+          err.response?.data?.message || "Failed to delete product"
+        }`
       );
     }
   };
@@ -266,7 +274,8 @@ const Products = () => {
     let sorted = [...filteredProducts];
     if (type === "low-high") sorted.sort((a, b) => a.price - b.price);
     if (type === "high-low") sorted.sort((a, b) => b.price - a.price);
-    if (type === "newest") sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    if (type === "newest")
+      sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     setSortType(type);
     setFilteredProducts(sorted);
@@ -291,7 +300,10 @@ const Products = () => {
   const handleAddToCart = async (productId) => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) return toast.warn("FanGear Central ⚠️ You must be logged in to add to cart");
+      if (!token)
+        return toast.warn(
+          "FanGear Central ⚠️ You must be logged in to add to cart"
+        );
 
       await axios.post(
         `${API_URL}/api/carts/add`,
@@ -300,11 +312,13 @@ const Products = () => {
       );
 
       window.dispatchEvent(new Event("cartUpdated"));
-      toast.success("FanGear Central Product added to cart!");
+      toast.success("FanGear Central ✅ Product added to cart!");
     } catch (error) {
       console.error("Add to cart error:", error.response?.data || error.message);
       toast.error(
-        `FanGear Central ⚠️ ${error.response?.data?.message || "Failed to add product to cart"}`
+        `FanGear Central ⚠️ ${
+          error.response?.data?.message || "Failed to add product to cart"
+        }`
       );
     }
   };
@@ -357,3 +371,4 @@ const Products = () => {
 };
 
 export default Products;
+
